@@ -9,18 +9,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * 用户表实体类
+ * 订单表实体类
  * @author cql
  * @date 2020/8/10 17:08
 */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "用户实体类")
-public class User extends Model<User>  implements Serializable {
+@ApiModel(value = "订单实体类")
+public class Orders extends Model<Orders>  implements Serializable {
 
     private static final long serialVersionUID = 493083738120393040L;
 
@@ -32,26 +33,34 @@ public class User extends Model<User>  implements Serializable {
     private Long id;
 
     /**
-     * 姓名
-     * 当name与数据库字段对不上的时候，需要指定映射关系
+     * 商品id
+     * 当productId与数据库字段对不上的时候，需要指定映射关系
      * condition = SqlCondition.LIKE，当去匹配的时候采用 like匹配方式
      * condition也可以写自定义字符串：condition = "%s LIKE CONCAT(#{%s},'%%"
      */
-    @TableField(value = "name",condition = SqlCondition.LIKE)
-    @ApiModelProperty(value = "姓名", example = "张三")
-    private String name;
+    @ApiModelProperty(value = "商品id", example = "123456")
+    private Long productId;
+
     /**
-     * 年龄
+     * 商品名称
      */
-    private Integer age;
+    private String productName;
+
     /**
-     * 邮箱
+     * 单价
      */
-    private String email;
+    private BigDecimal unitPrice;
+
     /**
-     * 上级id
+     * 数量
      */
-    private Long managerId;
+    private BigDecimal amount;
+
+    /**
+     * 创建人
+     */
+    private Long createUser;
+
     /**
      * 创建时间（新增时自动填充）
      */
@@ -62,11 +71,13 @@ public class User extends Model<User>  implements Serializable {
      */
     @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime updateTime;
+
     /**
      * 版本号（@Version 开启版本号控制  默认：1）
      */
     @Version
     private Integer version;
+
     /**
      * 是否删除（1：删除  0：未删除）
      *  @TableLogic 条件中过滤deleted 字段
@@ -76,29 +87,4 @@ public class User extends Model<User>  implements Serializable {
     @TableField(select = false)
     private Integer deleted;
 
-    /**
-     * 当前字段非数据库中的映射字段，若不加关键字，则会报错
-     * transient修饰的变量不参与序列化过程
-     * 缺点，若项目中有序列化需求，则此字段不能再使用
-     */
-    private transient String remark1;
-    /**
-     * 使用static 在插表时不加入
-     * 缺点：lombok不会为静态变量生成get，set
-     * 本该要求是每个对象都有一个这样的属性，但是使用静态变量，则变成类的属性，不合要求
-     */
-    private static String remark2;
-    /**
-     * 使用注解标识 该字段不在数据库表中 在插表时不加入
-     */
-    @TableField(exist = false)
-    private String remark3;
-
-    public static String getRemark2() {
-        return remark2;
-    }
-
-    public static void setRemark2(String remark2) {
-        User.remark2 = remark2;
-    }
 }
