@@ -21,7 +21,7 @@ import javax.annotation.Resource;
  * @date 2020/8/10
 */
 @RestController
-@RequestMapping("user")
+@RequestMapping("multi")
 public class MultiController {
 
     @Resource

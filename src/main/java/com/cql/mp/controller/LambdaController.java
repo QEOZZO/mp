@@ -16,7 +16,7 @@ import java.util.List;
  * @date 2020/8/10
 */
 @RestController
-@RequestMapping("condition")
+@RequestMapping("lambda")
 public class LambdaController {
 
     @Resource

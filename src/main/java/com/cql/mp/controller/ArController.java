@@ -1,13 +1,11 @@
 package com.cql.mp.controller;
 
-import com.cql.mp.dao.UserMapper;
 import com.cql.mp.entity.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,10 +17,6 @@ import java.util.List;
 @RestController
 @RequestMapping("ar")
 public class ArController {
-
-    @Resource
-    UserMapper userMapper;
-
 
     @PostMapping("insert")
     public void insert() {
