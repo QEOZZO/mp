@@ -27,7 +27,7 @@ public interface OrdersMapper extends CommonMapper<Orders> {
      */
     @SqlParser(filter = true)
     @Select("select * from orders ${ew.customSqlSegment}")
-    List<Orders> selectAll(@Param(Constants.WRAPPER) Wrapper<User> wrapper);
+    List<Orders> selectAll(@Param(Constants.WRAPPER) Wrapper<Orders> wrapper);
 
     @Select("select * from orders ${ew.customSqlSegment}")
     IPage<Orders> selectUsersPages(Page<Orders> orderPage, @Param(Constants.WRAPPER) Wrapper<Orders> wrapper);
