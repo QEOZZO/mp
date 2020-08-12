@@ -37,8 +37,8 @@ public class CustomController {
         lambda.like(User::getName, "雨")
                 .lt(User::getAge, "50");
         //注解
-        List<User> users = userMapper.selectAll(lambda);
-        users.forEach(System.err::println);
+//        List<User> users = userMapper.selectAll(lambda);
+//        users.forEach(System.err::println);
 
         //XML
         List<User> users2 = userMapper.selectAll2(lambda);

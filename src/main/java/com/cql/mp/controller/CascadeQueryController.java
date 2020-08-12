@@ -1,0 +1,31 @@
+package com.cql.mp.controller;
+
+import cn.icasc.cloud.common.http.RestResponse;
+import com.alibaba.fastjson.JSONObject;
+import com.cql.mp.dao.CascadeQueryMapper;
+import com.cql.mp.entity.Test1;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+@Api(value = "级联查询测试", tags="级联查询测试")
+@RestController
+@RequestMapping("cascadeQuery")
+public class CascadeQueryController {
+
+    @Resource
+    CascadeQueryMapper cascadeQueryMapper;
+
+    @ApiOperation(value="分页列表查询")
+    @PostMapping("select")
+    public RestResponse select(){
+        List<Test1> page = cascadeQueryMapper.select();
+        return RestResponse.success().setData(JSONObject.toJSON(page));
+    }
+
+}

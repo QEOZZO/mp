@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cql.mp.dao.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.cql.mp.entity.User">
+        <!--@Table user-->
+        <result property="id" column="id" />
+        <result property="name" column="name"/>
+        <result property="age" column="age" />
+        <result property="email" column="email" />
+        <result property="managerId" column="manager_id" />
+        <result property="createTime" column="create_time" />
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="selectAll2" resultType="com.cql.mp.entity.User" resultMap="BaseResultMap">
+        select * from user ${ew.customSqlSegment}
+    </select>
+
+</mapper>
