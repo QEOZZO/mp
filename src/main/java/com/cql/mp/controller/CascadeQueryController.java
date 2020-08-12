@@ -24,8 +24,6 @@ public class CascadeQueryController {
     @ApiOperation(value="测试查询", notes="测试查询", produces="application/json")
     @PostMapping("select")
     public RestResponse select(){
-        System.out.println("cql测试分支");
-
         List<Test1> page = cascadeQueryMapper.select();
         return RestResponse.success().setData(JSONObject.toJSON(page));
     }
