@@ -21,7 +21,7 @@ public class CascadeQueryController {
     @Resource
     CascadeQueryMapper cascadeQueryMapper;
 
-    @ApiOperation(value="分页列表查询")
+    @ApiOperation(value="测试查询", notes="测试查询", produces="application/json")
     @PostMapping("select")
     public RestResponse select(){
         List<Test1> page = cascadeQueryMapper.select();
