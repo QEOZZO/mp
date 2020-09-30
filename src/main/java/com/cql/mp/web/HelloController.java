@@ -33,10 +33,9 @@ public class HelloController {
      */
     @RequestMapping(value = "/1",method = RequestMethod.GET)
     @ApiOperation(value = "测试1", notes = "根据ID获取用户信息详细描述")
-    public String say(String name ){
+    public void say(String name ){
         System.out.print("hello");
         getRequestPrefix(httpServletRequest);
-        return "Hello world!";
     }
 
     /**
